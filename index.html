@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator Project</title>
-    <script src="script.js" defer></script>
+    <script src="script2.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,43 +13,47 @@
     <div class="container">
 
         <div class="display">
-            <div id="displayArea"> (display)</div>
+            
+                <div class="previousDisplayNum"></div>
+                <div class="currentDisplayNum"></div>
+           
+            
         </div>
         
 
         <div class = "buttons">
             <div class="intro-line">
-                <button> AC </button>  
-                <button> +/-</button>
-                <button> % </button> 
-                <button class="operators" id="divide"> / </button>
+                <button class="clearButton">AC</button>  
+                <button class="operators changeSign">+/-</button>
+                <button class="operators percentage">%</button> 
+                <button class="operators farRightOp" id="divide">/</button>
             </div>
 
             <div class="first-line">
-                <button class = "number" id="7"> 7 </button>
-                <button class = "number" id="8"> 8 </button>
-                <button class = "number" id="9"> 9 </button>
-                <button class="operators" id="multiply"> * </button>  
+                <button class = "number" id="7">7</button>
+                <button class = "number" id="8">8</button>
+                <button class = "number" id="9">9</button>
+                <button class="operators farRightOp" id="multiply">*</button>  
             </div>
 
             <div class = "second-line">
-                <button class = "number" id="4"> 4 </button>
-                <button class = "number" id="5"> 5 </button>
-                <button class = "number" id="6"> 6 </button>
-                <button class="operators">  - </button> 
+                <button class = "number" id="4">4</button>
+                <button class = "number" id="5">5</button>
+                <button class = "number" id="6">6</button>
+                <button class="operators farRightOp">-</button> 
             </div>
 
             <div class = "third-line">
-                <button class = "number" id="1"> 1 </button>
-                <button class = "number" id="2"> 2 </button>
-                <button class = "number" id="3"> 3 </button>
-                <button class="operators" id="plus"> + </button> 
+                <button class = "number" id="1">1</button>
+                <button class = "number" id="2">2</button>
+                <button class = "number" id="3">3</button>
+                <button class="operators farRightOp" id="plus">+</button> 
             </div>
 
             <div class = "last-line">
-                <button class = "number" id="0"> 0 </button>
-                <button> . </button> 
-                <button id="equalsTo"> = </button> 
+                <button class = "number" id="0">0</button>
+                <button class = "decimal">.</button> 
+                <button class= "farRightOp" id="equalsTo">=</button> 
             </div>
         </div>
     </div>
