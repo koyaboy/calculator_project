@@ -1,5 +1,4 @@
-// Keyboard functionality
-let currentNum = 0;
+let currentNum = "";
 let previousNum = "";
 let numOperator = "";
 let solution = "";
@@ -19,8 +18,6 @@ const decimal = document.querySelector(".decimal");
 
 const operators = document.querySelectorAll(".operators");
 
-//const display = document.querySelector(".display");
-
 const percentage = document.querySelector(".percentage");
 
 const changeSign = document.querySelector(".changeSign");
@@ -30,12 +27,12 @@ currentDisplayNum.style.fontSize = "38px";
 
 numbers.forEach((number)=> {
     number.addEventListener('click', e=> {
-        displayNumber(e.target.id);
+        displayNumber(e.target.textContent);
     });
 });
 
 function displayNumber(numberClicked){
-
+   
     if(previousNum != "" && currentNum != "" && numOperator == ""){
         previousNum = "";
         currentDisplayNum.textContent = currentNum;
@@ -59,14 +56,18 @@ operators.forEach((operator) =>{
 
 
 function handleOperator(op){
-    if(previousNum == ""){
+    if(currentNum == "" && previousNum == ""){
+        numOperator = ""
+        alert("You must have a number before clicking an operator");
+        previousDisplayNum.textContent = "";
+        currentDisplayNum.textContent = "";
+    }
+    
+   else if(previousNum == ""){
         previousNum = currentNum;
         operatorCheck(op);
     }
 
-    else if(currentNum == ""){
-        operatorCheck(op);
-    }
     
 
     else{
@@ -87,11 +88,13 @@ function operatorCheck(text){
 
 }
 
-percentage.addEventListener('click', ()=>{
+percentage.addEventListener('click', handlePercentage);
+
+function handlePercentage(){
     previousNum = previousNum /100;
     previousDisplayNum.textContent = "";
     currentDisplayNum.textContent = previousNum;
-})   
+}
   
 changeSign.addEventListener('click', ()=>{
     previousNum = -previousNum
@@ -100,8 +103,9 @@ changeSign.addEventListener('click', ()=>{
     
 })
 
-decimal.addEventListener('click' , ()=>{
+decimal.addEventListener('click' , handleDecimal);
 
+function handleDecimal(){
     countDecimal++;
 
     if(currentNum == ""){
@@ -121,11 +125,10 @@ decimal.addEventListener('click' , ()=>{
             
     }
         
+}
+    
     
        
-    
-    
-});
 
 
 
@@ -206,11 +209,97 @@ equals.addEventListener('click', ()=>{
 
 });
 
-clear.addEventListener('click', ()=>{
+
+
+clear.addEventListener('click', Clear)
+
+function Clear(){
     previousNum = ""
     currentNum = ""
     previousDisplayNum.textContent = "";
     currentDisplayNum.textContent = "0";
     countDecimal = 0;
     
-})
+};
+
+//kEYBOARD FUNCTIONALITY
+
+document.addEventListener('keydown', e=>{
+    switch(e.key){
+        case '0':
+            displayNumber('0');
+            break;
+        
+        case '1':
+            displayNumber('1');
+            break;
+        
+        case '2':
+            displayNumber('2');
+            break;
+
+        case '3':
+            displayNumber('3');
+            break;
+
+        case '4':
+            displayNumber('4');
+            break;
+
+        case '5':
+            displayNumber('5');
+            break;
+
+        case '6':
+            displayNumber('6');
+            break;
+
+        case '7':
+            displayNumber('7');
+            break;
+
+        case '8':
+            displayNumber('8');
+            break;
+
+        case '9':
+            displayNumber('9');
+            break;
+
+        case '+':
+            handleOperator('+');
+            break;
+
+        case '-':
+            handleOperator('-');
+            break;
+
+        case '*':
+            handleOperator('*');
+            break;
+
+        case '/':
+            handleOperator('/');
+            break;
+
+        case '%':
+            handlePercentage();
+            break;
+
+        case '.':
+            handleDecimal();
+            break;
+        
+        case 'Enter':
+            e.preventDefault();
+            operate();
+            break;
+
+        case 'Escape':
+            Clear();
+            break;
+        
+
+    }
+});
+
